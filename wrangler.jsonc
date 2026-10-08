@@ -9,7 +9,6 @@
     "not_found_handling": "404-page"
   },
   "routes": [
-    { "pattern": "libprocessing.processingfoundation.org", "custom_domain": true },
-    { "pattern": "lib.processing.org", "custom_domain": true }
+    { "pattern": "libprocessing.processingfoundation.org", "custom_domain": true }
   ]
 }
