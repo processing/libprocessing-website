@@ -22,3 +22,11 @@ npm run build   # static site in dist/
 | `src/lib/callouts.ts` | Turns `:::note`, `:::tip`, `:::caution` and `:::todo` blocks into callouts. |
 
 The full guide for writers is on the site at `/contributing/writing-docs/`, from `src/content/docs/contributing/writing-docs.md`.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Everyone taking part is expected to follow the [Code of Conduct](CODE-OF-CONDUCT.md).
+
+## License
+
+The code of this website is licensed under the GNU General Public License version 2 ([GPL-2.0](LICENSE)).
