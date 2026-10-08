@@ -1,7 +1,7 @@
 ---
 title: Community
 description: Talks, links and the project's status.
-order: 7
+order: 9
 status: outline
 links:
   - label: libprocessing

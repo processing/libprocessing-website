@@ -1,7 +1,7 @@
 ---
 title: FAQ
 description: Questions that keep coming up on Discord.
-order: 5
+order: 7
 status: draft
 ---
 

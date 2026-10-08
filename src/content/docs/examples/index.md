@@ -1,7 +1,7 @@
 ---
 title: Examples
 description: Sketches in Python, Rust and Java, ported from Processing and written for libprocessing.
-order: 2
+order: 3
 status: draft
 gallery: true
 ---
