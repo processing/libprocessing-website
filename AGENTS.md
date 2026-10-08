@@ -1,3 +1,12 @@
+## Working on this site
+
+Two kinds of change happen here, and each has a project skill in `.claude/skills/`:
+
+- **Content**: adding, editing or removing Markdown pages in `src/content/`. Use `add-page` and `remove-page`. These shouldn't need code changes.
+- **UI**: anything in `.astro`, `.css` or `src/lib/`. Use `ui-change`, which has the rules for design tokens, the grid and breakpoints, and the screenshot check.
+
+When work is ready to propose, `/open-pr` makes the branch and pull request.
+
 ## Development
 
 When starting the dev server, use background mode:
