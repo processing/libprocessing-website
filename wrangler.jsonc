@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "libprocessing-website",
+  "compatibility_date": "2026-10-01",
+  // Static site: serve the Astro build output, no Worker script needed.
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "libprocessing.processingfoundation.org", "custom_domain": true },
+    { "pattern": "lib.processing.org", "custom_domain": true }
+  ]
+}

@@ -4,7 +4,7 @@ import { satteri } from '@astrojs/markdown-satteri';
 import { callouts } from './src/lib/callouts.ts';
 
 export default defineConfig({
-  site: 'https://libprocessing.processing.org',
+  site: 'https://lib.processing.org',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
   markdown: {
