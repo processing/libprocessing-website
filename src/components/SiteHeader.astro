@@ -1,6 +1,7 @@
 ---
 import type { NavSection } from '../lib/docs.ts';
 import { site } from '../site.ts';
+import Button from './Button.astro';
 
 interface Props {
   sections: NavSection[];
@@ -33,7 +34,10 @@ const isCurrent = (href: string) => currentPath.startsWith(href);
         }
       </ul>
     </nav>
-    <a class="github" href={site.links.github}>GitHub ↗</a>
+    <div class="actions">
+      <a class="github" href={site.links.github}>GitHub ↗</a>
+      <Button label="Donate" href={site.links.donate} icon="heart" />
+    </div>
   </div>
 </header>
 
@@ -53,6 +57,7 @@ const isCurrent = (href: string) => currentPath.startsWith(href);
     align-items: center;
     column-gap: var(--spacing-2xl);
     min-height: var(--header-height);
+    padding-top: var(--spacing-s);
   }
 
   .wordmark {
@@ -109,13 +114,17 @@ const isCurrent = (href: string) => currentPath.startsWith(href);
     color: var(--color-text-accent);
   }
 
-  .github {
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-l);
     margin-left: auto;
   }
 
-  @media (--lg) {
+  @media (--xl) {
     .bar {
       flex-wrap: nowrap;
+      padding-top: 0;
     }
 
     .nav {

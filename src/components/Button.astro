@@ -3,13 +3,34 @@ interface Props {
   label: string;
   href: string;
   variant?: 'primary' | 'secondary' | 'tertiary';
+  icon?: 'heart';
 }
 
-const { label, href, variant = 'primary' } = Astro.props;
+const { label, href, variant = 'primary', icon } = Astro.props;
 ---
 
 <a class="button" href={href} data-variant={variant}>
-  <span class="label">{label}</span>
+  <span class="label">
+    {
+      icon === 'heart' && (
+        <svg
+          class="icon"
+          width="14"
+          height="14"
+          viewBox="0 0 12 10"
+          fill="none"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1.11562 5.89813L5.35078 9.75106C5.52656 9.91093 5.75859 10 6 10C6.24141 10 6.47344 9.91093 6.64922 9.75106L10.8844 5.89813C11.5969 5.25179 12 4.34508 12 3.39727V3.2648C12 1.66836 10.8164 0.307163 9.20156 0.0445154C8.13281 -0.12906 7.04531 0.21124 6.28125 0.955788L6 1.22986L5.71875 0.955788C4.95469 0.21124 3.86719 -0.12906 2.79844 0.0445154C1.18359 0.307163 0 1.66836 0 3.2648V3.39727C0 4.34508 0.403125 5.25179 1.11562 5.89813Z"
+            fill="currentColor"
+          />
+        </svg>
+      )
+    }
+    {label}
+  </span>
 </a>
 
 <style>
@@ -29,8 +50,15 @@ const { label, href, variant = 'primary' } = Astro.props;
   }
 
   .label {
-    display: block;
+    display: flex;
+    gap: var(--spacing-s);
+    align-items: center;
+    justify-content: center;
     padding: 12px 22px;
+  }
+
+  .icon {
+    flex-shrink: 0;
   }
 
   .button[data-variant="secondary"] {

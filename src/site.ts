@@ -15,6 +15,8 @@ export const site = {
     rustApi: '',
     discord: '',
     foundation: 'https://processingfoundation.org',
+    donate:
+      'https://www.every.org/processing-foundation?donateTo=processing-foundation#/donate/card',
   },
 };
 
