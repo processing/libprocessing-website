@@ -35,3 +35,12 @@ The content and the code of this website are separately licensed.
 - The **code** that structures the website is licensed under the GNU General Public License version 2 ([GPL-2.0](LICENSE)).
 
 For licensing information about libprocessing itself, see https://github.com/processing/libprocessing/blob/main/LICENSE.md
+
+## Deploying
+
+We don't have any actions set up for this right this second. For now, just run:
+
+```sh
+npm run build
+npx wrangler deploy
+```
