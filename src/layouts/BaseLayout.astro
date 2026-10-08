@@ -1,0 +1,43 @@
+---
+import '../styles/reset.css';
+import '../styles/variables.css';
+import '../styles/fonts.css';
+import '../styles/global.css';
+import '../styles/textStyles.css';
+import '../styles/layout.css';
+import '../styles/prose.css';
+
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { getNavigation } from '../lib/docs.ts';
+import { site } from '../site.ts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description } = Astro.props;
+const sections = await getNavigation();
+const pageTitle = title ? `${title} · ${site.title}` : site.title;
+---
+
+<html
+  lang="en"
+  data-color-theme={site.colorTheme === 'default' ? undefined : site.colorTheme}
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <SiteHeader sections={sections} currentPath={Astro.url.pathname} />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>

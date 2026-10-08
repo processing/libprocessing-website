@@ -1,0 +1,132 @@
+---
+import type { NavSection } from '../lib/docs.ts';
+import { site } from '../site.ts';
+
+interface Props {
+  sections: NavSection[];
+  currentPath: string;
+}
+
+const { sections, currentPath } = Astro.props;
+const isCurrent = (href: string) => currentPath.startsWith(href);
+---
+
+<header class="header">
+  <div class="bar">
+    <a class="wordmark" href="/">
+      {site.title}
+      <span class="badge">R&amp;D</span>
+    </a>
+    <nav aria-label="Sections" class="nav">
+      <ul>
+        {
+          sections.map((section) => (
+            <li>
+              <a
+                href={section.href}
+                aria-current={isCurrent(section.href) ? 'true' : undefined}
+              >
+                {section.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <a class="github" href={site.links.github}>GitHub ↗</a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    padding-inline: calc(var(--container-inset) + var(--spacing-column-gap));
+    border-bottom: 1px solid var(--color-bg-secondary);
+    background-color: var(--color-bg-default);
+  }
+
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: var(--spacing-2xl);
+    min-height: var(--header-height);
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-s);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-heading);
+    font-size: var(--text-size-heading-xs);
+    text-decoration: none;
+  }
+
+  .badge {
+    padding: 1px 6px;
+    background-color: var(--color-bg-accent);
+    color: var(--color-text-on-accent);
+    font-family: var(--font-family-body);
+    font-size: var(--text-size-body-3xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-loosest);
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    margin-inline: calc(var(--spacing-column-gap) * -1);
+    padding-inline: var(--spacing-column-gap);
+    overflow-x: auto;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: var(--spacing-xl);
+    padding-bottom: var(--spacing-m);
+  }
+
+  .nav a,
+  .github {
+    color: var(--color-text-primary);
+    font-size: var(--text-size-body-2xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-loosest);
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .nav a:hover,
+  .github:hover {
+    color: var(--color-text-secondary);
+  }
+
+  .nav a[aria-current] {
+    color: var(--color-text-accent);
+  }
+
+  .github {
+    margin-left: auto;
+  }
+
+  @media (--lg) {
+    .bar {
+      flex-wrap: nowrap;
+    }
+
+    .nav {
+      order: 0;
+      width: auto;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+
+    .nav ul {
+      padding-bottom: 0;
+    }
+  }
+</style>

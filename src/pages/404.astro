@@ -1,0 +1,28 @@
+---
+import Button from '../components/Button.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found">
+  <div class="row page">
+    <div class="content">
+      <p class="eyebrow">404</p>
+      <h1 class="heading-xl">Page not found</h1>
+      <p class="text-secondary">This page doesn't exist, or hasn't been written yet.</p>
+      <Button label="Back to the start" href="/" />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding-block: var(--spacing-6xl);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-l);
+    align-items: flex-start;
+  }
+</style>

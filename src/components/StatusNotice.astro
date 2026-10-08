@@ -1,0 +1,52 @@
+---
+import type { Status } from '../lib/constants.ts';
+
+interface Props {
+  status: Status;
+  editUrl: string;
+}
+
+const { status, editUrl } = Astro.props;
+---
+
+{
+  status !== 'ready' && (
+    <div class="notice" data-status={status}>
+      {status === 'outline' ? (
+        <p>
+          <strong>This page is an outline.</strong> The headings show what it
+          should cover. Help fill it in by{' '}
+          <a href={editUrl}>editing it on GitHub</a>.
+        </p>
+      ) : (
+        <p>
+          <strong>Draft.</strong> This page may be incomplete or out of date.{' '}
+          <a href={editUrl}>Suggest an edit</a>.
+        </p>
+      )}
+    </div>
+  )
+}
+
+<style>
+  .notice {
+    padding: var(--spacing-m) var(--spacing-l);
+    border: 2px dashed var(--color-bg-secondary);
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-body-xs);
+    line-height: var(--leading-loose);
+  }
+
+  .notice[data-status="draft"] {
+    border-style: solid;
+  }
+
+  strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  a {
+    color: var(--color-text-accent);
+  }
+</style>

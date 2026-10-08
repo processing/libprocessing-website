@@ -1,0 +1,255 @@
+:root {
+  /* BASE COLOR SCALES 
+   * ====================================================================
+   *
+   * ALWAYS! define them in rgb values, so we can
+   * use them like this rgb(var(--base-color-name));
+   *
+   * NEVER! use them directly, these should be mapped
+   * to semantically named color names to use instead.
+   */
+  --base-color-white: 255, 255, 255;
+  --base-color-black: 0, 0, 0;
+  --base-color-off-black: 29, 29, 29;
+  --base-color-gray-0: 242, 242, 247;
+  --base-color-purple-0: 241, 222, 253;
+  --base-color-purple-1: 217, 217, 255;
+  --base-color-purple-2: 212, 178, 254;
+  --base-color-purple-3: 156, 75, 255;
+  --base-color-purple-4: 173, 86, 242;
+  --base-color-purple-5: 161, 90, 234;
+  --base-color-purple-6: 122, 0, 222;
+  --base-color-purple-7: 110, 1, 213;
+  --base-color-pink-0: 253, 238, 247;
+  --base-color-pink-1: 252, 134, 255;
+  --base-color-pink-2: 242, 140, 203;
+  --base-color-red-0: 255, 106, 100;
+  --base-color-red-1: 231, 102, 118;
+  --base-color-blue-0: 232, 231, 254;
+  --base-color-blue-1: 217, 217, 253;
+  --base-color-blue-2: 135, 172, 253;
+  --base-color-blue-3: 89, 79, 247;
+  --base-color-blue-4: 75, 52, 255;
+  --base-color-green-0: 243, 250, 229;
+  --base-color-green-1: 172, 223, 78;
+  --base-color-orange-0: 255, 217, 217;
+  --base-color-orange-1: 255, 176, 149;
+  --base-color-orange-2: 252, 134, 42;
+
+  /* SEMANTICALLY NAMED COLOR
+   * =================================================================== 
+   
+   /* Text 
+    *
+    * Any custom property that starts with --color-text will 
+    * also automatically be turned into .text- utility class,
+    * so --color-text-primary will create the .text-primary
+    * utility class.
+    * */
+  --color-text-primary: rgb(var(--base-color-off-black));
+  --color-text-secondary: rgb(var(--base-color-off-black), 60%);
+  --color-text-accent: rgb(var(--base-color-red-0));
+  --color-text-on-primary: rgb(var(--base-color-white));
+  --color-text-secondary-on-primary: rgb(var(--base-color-white), 60%);
+  --color-text-on-accent: rgb(var(--base-color-white));
+
+  /* Scaffolding; goes when the real logo asset lands. */
+  --color-text-on-placeholder: rgb(var(--base-color-white));
+
+  /* Background
+   *
+   * Any custom property that starts with --color-bg will
+   * also automatically be turned into .bg utility class,
+   * so --color-bg-primary will create the .bg-primary
+   * utility class.
+   */
+  --color-bg-default: rgb(var(--base-color-white));
+  --color-bg-primary: rgb(var(--base-color-blue-3));
+  --color-bg-secondary: rgb(var(--base-color-blue-1));
+  --color-bg-accent: rgb(var(--base-color-red-0));
+  --color-bg-placeholder: rgb(var(--base-color-off-black), 20%);
+
+  /* Neutral, not part of the per-theme palette — a gray field background
+   * that stays the same across every data-color-theme. */
+  --color-bg-field: rgb(var(--base-color-gray-0));
+
+  /* Overlays */
+
+  /* Border
+   *
+   * Any custom property that starts with --color-border will
+   * also automatically be turned into .border utility class,
+   * so --color-border-primary will create the .border-primary
+   * utility class.
+   */
+
+  /* LAYOUT
+   *
+   * Sets up the grid logic that's used as the foundation for
+   * handling macro layout on the website.
+   * ================================================================== */
+  --layout-grid-columns: 12;
+  --container-width: 1600px;
+  --thread-height-2xs: 2px;
+  --thread-height-xs: 4px;
+  --thread-height-s: 8px;
+  --thread-height-m: 20px;
+  --thread-height-l: 40px;
+
+  /* SPACING 
+   *
+   * Any custom property that starts with --spacing-
+   * will yield utility classes for padding, margin,
+   * gap, and stack.
+   *
+   * =================================================================== */
+  --spacing-none: 0; /* This makes it easier when spacing is controlled through CMS options */
+  --spacing-xs: fluid(3px, 5px);
+  --spacing-s: fluid(6px, 10px);
+  --spacing-m: fluid(10px, 14px);
+  --spacing-l: fluid(13px, 19px);
+  --spacing-xl: fluid(16px, 24px);
+  --spacing-2xl: fluid(20px, 32px);
+  --spacing-3xl: fluid(32px, 48px);
+  --spacing-4xl: fluid(48px, 70px);
+  --spacing-5xl: fluid(64px, 96px);
+  --spacing-6xl: fluid(96px, 144px);
+
+  /* Semantically named spacings */
+
+  /* Rounded so border-width and background-size readers agree — only the former snaps to whole pixels. */
+  --spacing-column-gap: round(var(--spacing-xl), 1px);
+  --spacing-internal-section-gap: var(--spacing-3xl);
+  --spacing-section-gap: var(--spacing-6xl);
+
+  /* TYPOGRAPHY 
+   * =================================================================== */
+
+  /* Font families */
+  --font-family-programme: "Programme", sans-serif;
+  --font-family-executive: "Executive", sans-serif;
+  --font-family-heading: var(--font-family-programme);
+  --font-family-body: var(--font-family-executive);
+
+  /* Weights */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Heading text sizes */
+  --text-size-heading-2xl: fluid(48px, 76px);
+  --text-size-heading-xl: fluid(38px, 64px);
+  --text-size-heading-l: fluid(32px, 50px);
+  --text-size-heading-m: fluid(28px, 42px);
+  --text-size-heading-s: fluid(24px, 34px);
+  --text-size-heading-xs: fluid(20px, 25px);
+  --text-size-heading-2xs: fluid(18px, 21px);
+
+  /* Body text sizes */
+  --text-size-body-l: fluid(20px, 24px);
+  --text-size-body-m: fluid(18px, 22px);
+  --text-size-body-s: fluid(16px, 20px);
+  --text-size-body-xs: fluid(14px, 18px);
+  --text-size-body-2xs: fluid(12px, 14px);
+  --text-size-body-3xs: fluid(10px, 12px);
+
+  /* Letter spacing */
+  --letter-spacing-tightest: -0.01em;
+  --letter-spacing-tighter: -0.0066em;
+  --letter-spacing-tight: -0.0033em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-loose: 0.01em;
+  --letter-spacing-loosest: 0.02em;
+
+  /* Leading */
+  --leading-tightest: 0.95;
+  --leading-none: 1;
+  --leading-tight: 1.05;
+  --leading-normal: 1.125;
+  --leading-loose: 1.275;
+  --leading-loosest: 1.35;
+
+  /**
+   * TRANSITIONS
+   * ======================================================== */
+
+  /**
+   * ASPECT RATIOS
+   * ======================================================== */
+  --aspect-square: 1 / 1;
+  --aspect-landscape: 4 / 3;
+  --aspect-wide: 16 / 9;
+
+  /**
+   * BORDER RADII
+   * ======================================================== */
+
+  /**
+   * FILTER AND OPACITY VALUES
+   * ======================================================== */
+
+  /**
+   * Z-INDICES
+   * ======================================================== */
+
+  --z-index-over-divider: 1;
+  --z-index-over-content: 1;
+  --z-index-navigation-dropdown: 10;
+}
+
+/* THEMES
+ * ===================================================================
+ *
+ * :root above holds the default theme (theme-1). Set data-color-theme="theme-N"
+ * on <html> (or any ancestor) to switch — each block below re-points the
+ * semantic color tokens at that theme's base color. Rename theme-N to the
+ * real theme names once they're defined, and add every semantic color
+ * token here as more get added above.
+ */
+
+/* Purple and orange */
+:root[data-color-theme="theme-2"] {
+  --color-text-accent: rgb(var(--base-color-orange-2));
+  --color-text-on-accent: rgb(var(--base-color-off-black));
+  --color-bg-primary: rgb(var(--base-color-purple-3));
+  --color-bg-secondary: rgb(var(--base-color-purple-1));
+  --color-bg-accent: rgb(var(--base-color-orange-2));
+}
+
+/* Green and pink */
+:root[data-color-theme="theme-3"] {
+  --color-text-accent: rgb(var(--base-color-pink-1));
+  --color-text-on-accent: rgb(var(--base-color-off-black));
+  --color-text-on-primary: rgb(var(--base-color-off-black));
+  --color-text-secondary-on-primary: rgb(var(--base-color-off-black), 60%);
+  --color-bg-primary: rgb(var(--base-color-green-1));
+  --color-bg-secondary: rgb(var(--base-color-green-0));
+  --color-bg-accent: rgb(var(--base-color-pink-1));
+}
+
+/* Pink and purple */
+:root[data-color-theme="theme-4"] {
+  --color-text-accent: rgb(var(--base-color-purple-3));
+  --color-text-on-primary: rgb(var(--base-color-off-black));
+  --color-text-secondary-on-primary: rgb(var(--base-color-off-black), 60%);
+  --color-bg-primary: rgb(var(--base-color-pink-2));
+  --color-bg-secondary: rgb(var(--base-color-pink-0));
+  --color-bg-accent: rgb(var(--base-color-purple-3));
+}
+
+/* PF purple */
+:root[data-color-theme="theme-5"] {
+  --color-text-accent: rgb(var(--base-color-purple-6));
+  --color-bg-primary: rgb(var(--base-color-purple-4));
+  --color-bg-secondary: rgb(var(--base-color-purple-0));
+  --color-bg-accent: rgb(var(--base-color-purple-6));
+}
+
+/* Orange and blue */
+:root[data-color-theme="theme-6"] {
+  --color-text-accent: rgb(var(--base-color-blue-4));
+  --color-text-on-primary: rgb(var(--base-color-off-black));
+  --color-text-secondary-on-primary: rgb(var(--base-color-off-black), 60%);
+  --color-bg-primary: rgb(var(--base-color-orange-1));
+  --color-bg-secondary: rgb(var(--base-color-orange-0));
+  --color-bg-accent: rgb(var(--base-color-blue-4));
+}

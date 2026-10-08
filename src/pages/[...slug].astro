@@ -1,0 +1,21 @@
+---
+import { getCollection, render } from 'astro:content';
+import ExampleGallery from '../components/ExampleGallery.astro';
+import DocLayout from '../layouts/DocLayout.astro';
+import { slugOf } from '../lib/docs.ts';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs
+    .filter((entry) => slugOf(entry) !== '')
+    .map((entry) => ({ params: { slug: slugOf(entry) }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+---
+
+<DocLayout entry={entry} headings={headings}>
+  <Content />
+  {entry.data.gallery && <ExampleGallery slot="after" />}
+</DocLayout>

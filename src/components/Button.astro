@@ -1,0 +1,71 @@
+---
+interface Props {
+  label: string;
+  href: string;
+  variant?: 'primary' | 'secondary' | 'tertiary';
+}
+
+const { label, href, variant = 'primary' } = Astro.props;
+---
+
+<a class="button" href={href} data-variant={variant}>
+  <span class="label">{label}</span>
+</a>
+
+<style>
+  .button {
+    --bg-color: var(--color-bg-accent);
+    --text-color: var(--color-text-on-accent);
+    --hover-expand: 8px;
+
+    display: inline-block;
+    position: relative;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--text-size-body-xs);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .label {
+    display: block;
+    padding: 12px 22px;
+  }
+
+  .button[data-variant="secondary"] {
+    --bg-color: var(--color-bg-primary);
+    --text-color: var(--color-text-on-primary);
+  }
+
+  .button[data-variant="tertiary"] {
+    --bg-color: var(--color-bg-secondary);
+    --text-color: var(--color-text-primary);
+  }
+
+  .button::before,
+  .button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 0;
+    height: 100%;
+    transition: width 150ms ease;
+    background-color: var(--bg-color);
+  }
+
+  .button::after {
+    right: auto;
+    left: 100%;
+  }
+
+  .button:hover::before,
+  .button:hover::after {
+    width: var(--hover-expand);
+  }
+
+  .button:active {
+    opacity: 0.8;
+  }
+</style>

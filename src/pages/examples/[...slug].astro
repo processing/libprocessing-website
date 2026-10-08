@@ -1,0 +1,147 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Divider from '../../components/Divider.astro';
+import LanguageTags from '../../components/LanguageTags.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages, type Language } from '../../lib/constants.ts';
+import { exampleCategories } from '../../lib/examples.ts';
+import { site, sourceRepos } from '../../site.ts';
+
+export async function getStaticPaths() {
+  const examples = await getCollection('examples');
+  return examples.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { title, description, category, group, image, sources } = entry.data;
+const { Content } = await render(entry);
+
+const sourceList = (Object.entries(sources) as [Language, string][]).map(
+  ([language, path]) => ({
+    language,
+    path,
+    href: `${sourceRepos[language]}${path}`,
+  }),
+);
+const hrefs = Object.fromEntries(sourceList.map(({ language, href }) => [language, href]));
+const editUrl = `${site.editBaseUrl}examples/${entry.filePath?.replace(/^src\/content\/examples\//, '')}`;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="row page">
+    <header class="header">
+      <p class="eyebrow">
+        <a href="/examples/">Examples</a> / {exampleCategories[category].title} / {group}
+      </p>
+      <h1 class="heading-l">{title}</h1>
+      {description && <p class="description">{description}</p>}
+      <LanguageTags languages={sourceList.map(({ language }) => language)} hrefs={hrefs} />
+    </header>
+
+    <div class="media">
+      {image ? <Image src={image} alt="" width={1200} /> : <div class="placeholder" />}
+    </div>
+
+    <div class="body">
+      <h2 class="heading-2xs">Source</h2>
+      <ul class="sources">
+        {
+          sourceList.map(({ language, path, href }) => (
+            <li>
+              <span class="language">{languages[language]}</span>
+              <a href={href}><code>{path}</code></a>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="prose">
+        <Content />
+      </div>
+      <a class="edit" href={editUrl}>Edit this example's page on GitHub</a>
+    </div>
+  </div>
+  <Divider size="s" class="end" />
+</BaseLayout>
+
+<style>
+  .page {
+    row-gap: var(--spacing-2xl);
+    padding-block: var(--spacing-3xl);
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-m);
+  }
+
+  .eyebrow a {
+    color: inherit;
+  }
+
+  .description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-body-m);
+  }
+
+  .media :global(img),
+  .placeholder {
+    width: 100%;
+    aspect-ratio: var(--aspect-landscape);
+    object-fit: cover;
+  }
+
+  .placeholder {
+    background: linear-gradient(to bottom, var(--color-bg-secondary), var(--color-bg-default));
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-l);
+  }
+
+  .sources {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    font-size: var(--text-size-body-xs);
+  }
+
+  .sources li {
+    display: flex;
+    gap: var(--spacing-m);
+    align-items: baseline;
+  }
+
+  .language {
+    min-width: 4em;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .sources a {
+    color: var(--color-text-accent);
+    word-break: break-all;
+  }
+
+  .edit {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-body-2xs);
+  }
+
+  @media (--lg) {
+    .header {
+      grid-column: 1 / span 5;
+    }
+
+    .media {
+      grid-column: 6 / span 7;
+      grid-row: 1 / span 2;
+    }
+
+    .body {
+      grid-column: 1 / span 5;
+    }
+  }
+</style>

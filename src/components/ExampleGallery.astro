@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+import { languages, type Language } from '../lib/constants.ts';
+import { exampleHref, getExampleGallery } from '../lib/examples.ts';
+import LanguageTags from './LanguageTags.astro';
+
+const gallery = await getExampleGallery();
+const languageIds = Object.keys(languages) as Language[];
+---
+
+<div class="gallery" data-gallery>
+  <fieldset class="filter">
+    <legend>Show examples in</legend>
+    <label><input type="radio" name="language" value="all" checked /> All</label>
+    {
+      languageIds.map((id) => (
+        <label>
+          <input type="radio" name="language" value={id} /> {languages[id]}
+        </label>
+      ))
+    }
+  </fieldset>
+
+  {
+    gallery.map((category) => (
+      <section class="category">
+        <h2 class="heading-s">{category.title}</h2>
+        <p class="text-secondary">{category.description}</p>
+        {category.groups.map((group) => (
+          <div class="group">
+            <h3 class="group-title">{group.name}</h3>
+            <ul class="grid">
+              {group.examples.map((example) => {
+                const exampleLanguages = Object.keys(example.data.sources) as Language[];
+                return (
+                  <li data-languages={exampleLanguages.join(' ')}>
+                    <a class="card" href={exampleHref(example)}>
+                      <div class="thumb">
+                        {example.data.image && (
+                          <Image src={example.data.image} alt="" width={480} />
+                        )}
+                      </div>
+                      <span class="title">{example.data.title}</span>
+                    </a>
+                    <LanguageTags languages={exampleLanguages} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </section>
+    ))
+  }
+</div>
+
+<script>
+  for (const gallery of document.querySelectorAll<HTMLElement>('[data-gallery]')) {
+    gallery.addEventListener('change', (event) => {
+      const language = (event.target as HTMLInputElement).value;
+      for (const item of gallery.querySelectorAll<HTMLElement>('[data-languages]')) {
+        item.hidden =
+          language !== 'all' && !item.dataset.languages?.split(' ').includes(language);
+      }
+      for (const group of gallery.querySelectorAll<HTMLElement>('.group')) {
+        group.hidden = !group.querySelector('[data-languages]:not([hidden])');
+      }
+    });
+  }
+</script>
+
+<style>
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4xl);
+  }
+
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-m) var(--spacing-xl);
+    font-size: var(--text-size-body-xs);
+  }
+
+  legend {
+    margin-bottom: var(--spacing-s);
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-body-2xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-loosest);
+    text-transform: uppercase;
+  }
+
+  label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+  }
+
+  input {
+    accent-color: var(--color-bg-accent);
+  }
+
+  .category > p {
+    margin-top: var(--spacing-xs);
+    font-size: var(--text-size-body-xs);
+  }
+
+  .group {
+    margin-top: var(--spacing-2xl);
+  }
+
+  .group-title {
+    margin-bottom: var(--spacing-m);
+    font-size: var(--text-size-body-2xs);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-loosest);
+    text-transform: uppercase;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
+    gap: var(--spacing-xl) var(--spacing-m);
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .thumb {
+    aspect-ratio: var(--aspect-landscape);
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, var(--color-bg-secondary), var(--color-bg-default));
+  }
+
+  .thumb :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .title {
+    font-size: var(--text-size-body-xs);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--leading-normal);
+  }
+
+  .card:hover .title {
+    color: var(--color-text-accent);
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+import { languages, type Language } from '../lib/constants.ts';
+import Tag from './Tag.astro';
+
+interface Props {
+  languages: Language[];
+  hrefs?: Partial<Record<Language, string>>;
+}
+
+const { languages: list, hrefs = {} } = Astro.props;
+---
+
+{
+  list.length > 0 && (
+    <ul class="languages" aria-label="Languages">
+      {list.map((language) => (
+        <li>
+          <Tag label={languages[language]} href={hrefs[language]} variant="outline" />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+</style>

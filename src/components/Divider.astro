@@ -1,0 +1,90 @@
+---
+interface Props {
+  size?: '2xs' | 'xs' | 's' | 'm' | 'l';
+  threadSpan?: 1 | 2 | 3 | 4;
+  variant?: 'default' | 'intersection';
+  class?: string;
+}
+
+const {
+  size = 'm',
+  threadSpan = 2,
+  variant = 'default',
+  class: className,
+} = Astro.props;
+---
+
+<div
+  class:list={['divider', className]}
+  data-size={size}
+  data-variant={variant}
+  style={{ '--thread-span': threadSpan }}
+  aria-hidden="true"
+>
+</div>
+
+<style>
+  /* Two background layers draw the threads: one tile is a gap plus a thread, sized so threads line up with .row columns. */
+  .divider {
+    --span: max(var(--thread-span), 6);
+    --accent-color: var(--color-bg-primary);
+
+    position: relative;
+    padding-inline: var(--container-inset);
+    background-clip: content-box, border-box;
+    background-image:
+      linear-gradient(
+        to right,
+        transparent 0 var(--spacing-column-gap),
+        var(--color-bg-secondary) var(--spacing-column-gap) 100%
+      ),
+      linear-gradient(var(--accent-color), var(--accent-color));
+    background-repeat: repeat-x, no-repeat;
+    background-size:
+      calc(var(--span) * (100% - var(--spacing-column-gap)) / 12) 100%,
+      auto;
+    background-origin: content-box, border-box;
+  }
+
+  .divider[data-variant="intersection"] {
+    --accent-color: var(--color-bg-accent);
+  }
+
+  @media (--sm) {
+    .divider {
+      --span: max(var(--thread-span), 3);
+    }
+  }
+
+  @media (--md) {
+    .divider {
+      --span: max(var(--thread-span), 2);
+    }
+  }
+
+  @media (--lg) {
+    .divider {
+      --span: var(--thread-span);
+    }
+  }
+
+  .divider[data-size="2xs"] {
+    height: var(--thread-height-2xs);
+  }
+
+  .divider[data-size="xs"] {
+    height: var(--thread-height-xs);
+  }
+
+  .divider[data-size="s"] {
+    height: var(--thread-height-s);
+  }
+
+  .divider[data-size="m"] {
+    height: var(--thread-height-m);
+  }
+
+  .divider[data-size="l"] {
+    height: var(--thread-height-l);
+  }
+</style>

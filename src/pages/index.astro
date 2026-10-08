@@ -1,0 +1,188 @@
+---
+import { getEntry, render } from 'astro:content';
+import Button from '../components/Button.astro';
+import Divider from '../components/Divider.astro';
+import LinkCards from '../components/LinkCards.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { languages } from '../lib/constants.ts';
+import { getNavigation } from '../lib/docs.ts';
+
+const home = await getEntry('docs', 'index');
+if (!home) throw new Error('src/content/docs/index.md is missing.');
+
+const { title, description, hero, quickstarts } = home.data;
+const { Content } = await render(home);
+const sections = await getNavigation();
+---
+
+<BaseLayout description={description}>
+  <section class="row hero">
+    <div class="intro">
+      {hero?.eyebrow && <p class="eyebrow">{hero.eyebrow}</p>}
+      <h1 class="heading-2xl">{title}</h1>
+      {hero && <p class="tagline">{hero.tagline}</p>}
+      {
+        hero && hero.actions.length > 0 && (
+          <div class="actions">
+            {hero.actions.map(({ label, href, variant }) => (
+              <Button label={label} href={href} variant={variant} />
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="accent" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+  </section>
+
+  <Divider size="m" threadSpan={2} variant="intersection" />
+
+  {
+    quickstarts.length > 0 && (
+      <section class="row quickstarts" aria-labelledby="quickstart-title">
+        <h2 id="quickstart-title" class="heading-m section-title">Quickstart</h2>
+        <ul class="quickstart-list">
+          {quickstarts.map(({ language, title, command, href }) => (
+            <li>
+              <a class="quickstart" href={href}>
+                <span class="eyebrow">{languages[language]}</span>
+                <span class="quickstart-title">{title}</span>
+                <code>{command}</code>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="row body">
+    <div class="prose">
+      <Content />
+    </div>
+  </section>
+
+  <Divider size="xs" threadSpan={1} />
+
+  <section class="row sections" aria-labelledby="sections-title">
+    <h2 id="sections-title" class="heading-m section-title">Explore</h2>
+    <div class="section-cards">
+      <LinkCards
+        links={sections.map((section) => ({
+          label: section.label,
+          href: section.href,
+          description: section.entry.data.description,
+        }))}
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    row-gap: var(--spacing-2xl);
+    padding-block: var(--spacing-5xl) var(--spacing-4xl);
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .tagline {
+    max-width: 36ch;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-body-l);
+    line-height: var(--leading-loose);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-l) var(--spacing-xl);
+    margin-top: var(--spacing-m);
+  }
+
+  .accent {
+    display: none;
+  }
+
+  .accent span {
+    background: linear-gradient(to bottom, var(--color-bg-secondary), var(--color-bg-default));
+  }
+
+  .quickstarts,
+  .body,
+  .sections {
+    row-gap: var(--spacing-2xl);
+    padding-block: var(--spacing-4xl);
+  }
+
+  .quickstart-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: var(--spacing-m);
+  }
+
+  .quickstart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+    height: 100%;
+    padding: var(--spacing-l);
+    border-top: var(--thread-height-xs) solid var(--color-bg-primary);
+    background-color: var(--color-bg-field);
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .quickstart:hover {
+    border-color: var(--color-bg-accent);
+  }
+
+  .quickstart-title {
+    font-family: var(--font-family-heading);
+    font-size: var(--text-size-heading-xs);
+  }
+
+  .quickstart code {
+    margin-top: auto;
+    padding-top: var(--spacing-m);
+    font-family: var(--font-family-mono);
+    font-size: var(--text-size-body-2xs);
+    overflow-wrap: anywhere;
+  }
+
+  @media (--lg) {
+    .intro {
+      grid-column: 1 / span 7;
+    }
+
+    .accent {
+      display: grid;
+      grid-column: 9 / span 4;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-column-gap);
+      align-self: stretch;
+    }
+
+    .accent span:nth-child(2) {
+      grid-row: span 2;
+    }
+
+    .section-title {
+      grid-column: 1 / span 3;
+    }
+
+    .quickstart-list,
+    .section-cards {
+      grid-column: 4 / span 9;
+    }
+
+    .body .prose {
+      grid-column: 4 / span 6;
+    }
+  }
+</style>

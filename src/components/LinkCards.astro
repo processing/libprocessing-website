@@ -1,0 +1,68 @@
+---
+interface Props {
+  links: { label: string; href: string; description?: string }[];
+}
+
+const { links } = Astro.props;
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+---
+
+{
+  links.length > 0 && (
+    <ul class="cards">
+      {links.map(({ label, href, description }) => (
+        <li>
+          <a class="card" href={href || undefined} aria-disabled={href ? undefined : 'true'}>
+            <span class="label">
+              {label}
+              {href && isExternal(href) && <span aria-hidden="true"> ↗</span>}
+            </span>
+            {description && <span class="description">{description}</span>}
+            {!href && <span class="description">Link coming soon</span>}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: var(--spacing-m);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    height: 100%;
+    padding: var(--spacing-l);
+    border-top: var(--thread-height-xs) solid var(--color-bg-primary);
+    background-color: var(--color-bg-field);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: border-color 150ms ease;
+  }
+
+  a.card[href]:hover {
+    border-color: var(--color-bg-accent);
+  }
+
+  .card[aria-disabled] {
+    border-color: var(--color-bg-secondary);
+  }
+
+  .label {
+    font-family: var(--font-family-heading);
+    font-size: var(--text-size-heading-2xs);
+    line-height: var(--leading-normal);
+  }
+
+  .description {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-body-xs);
+    line-height: var(--leading-loose);
+  }
+</style>

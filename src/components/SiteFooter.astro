@@ -1,0 +1,87 @@
+---
+import PFLogo from '../assets/media/ProcessingFoundation-logo.svg';
+import { site } from '../site.ts';
+import Divider from './Divider.astro';
+
+const links = [
+  { label: 'libprocessing on GitHub', href: site.links.github },
+  { label: 'processing4 on GitHub', href: site.links.processing4 },
+  { label: 'Python API (mewnala)', href: site.links.pythonApi },
+  { label: 'Rust API', href: site.links.rustApi },
+  { label: 'Discord', href: site.links.discord },
+].filter(({ href }) => href);
+---
+
+<footer class="footer">
+  <Divider size="s" />
+  <div class="row content">
+    <a class="logo" href={site.links.foundation} aria-label="Processing Foundation">
+      <PFLogo />
+    </a>
+    <p class="about text-secondary">
+      libprocessing is an experimental research project of the Processing
+      Foundation. APIs change without notice.
+    </p>
+    <ul class="links">
+      {links.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--spacing-section-gap);
+  }
+
+  .content {
+    row-gap: var(--spacing-xl);
+    padding-block: var(--spacing-2xl) var(--spacing-4xl);
+  }
+
+  .logo {
+    display: block;
+    width: 180px;
+    color: var(--color-text-primary);
+  }
+
+  .logo :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+
+  .about {
+    max-width: 32ch;
+    font-size: var(--text-size-body-xs);
+    line-height: var(--leading-loose);
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: var(--text-size-body-xs);
+  }
+
+  .links a {
+    color: var(--color-text-accent);
+    text-decoration: none;
+  }
+
+  .links a:hover {
+    color: var(--color-text-primary);
+  }
+
+  @media (--md) {
+    .logo {
+      grid-column: span 4;
+    }
+
+    .about {
+      grid-column: span 4;
+    }
+
+    .links {
+      grid-column: span 4;
+    }
+  }
+</style>

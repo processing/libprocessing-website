@@ -1,0 +1,181 @@
+/**
+ * This file contains any hand written text styles
+ * that combine more than one CSS property. 
+ *
+ * Wrapping them all in :where lowers their specificity, making
+ * sure they get easily overwritten if needed.
+ */
+
+/* Font features */
+
+:where(.alternate-e) {
+  font-feature-settings: "ss08" off;
+}
+
+/* Headings */
+
+:where(.heading-2xl) {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-size-heading-2xl);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--leading-tightest);
+}
+
+:where(.heading-xl) {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-size-heading-xl);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--leading-tightest);
+}
+
+:where(.heading-l) {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-size-heading-l);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--leading-tightest);
+}
+
+:where(.heading-m) {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-size-heading-m);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--leading-tight);
+}
+
+:where(.heading-s) {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-size-heading-s);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--leading-tight);
+}
+
+:where(.heading-xs) {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-size-heading-xs);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--leading-loose);
+}
+
+:where(.heading-2xs) {
+  font-family: var(--font-family-heading);
+  font-size: var(--text-size-heading-2xs);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--leading-normal);
+}
+
+/* Body */
+
+:where(.body-l) {
+  font-family: var(--font-family-body);
+  font-size: var(--text-size-body-l);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: var(--leading-loose);
+}
+
+:where(.body-m) {
+  font-family: var(--font-family-body);
+  font-size: var(--text-size-body-m);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--leading-loose);
+}
+
+:where(.body-s) {
+  font-family: var(--font-family-body);
+  font-size: var(--text-size-body-s);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--leading-loose);
+}
+
+:where(.body-xs) {
+  font-family: var(--font-family-body);
+  font-size: var(--text-size-body-xs);
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--leading-loose);
+}
+
+:where(.body-2xs) {
+  font-family: var(--font-family-body);
+  font-size: var(--text-size-body-2xs);
+  letter-spacing: var(--letter-spacing-loose);
+  line-height: var(--leading-normal);
+}
+
+/* Other */
+
+:where(.bold) {
+  font-weight: var(--font-weight-bold);
+}
+
+:where(.eyebrow) {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: var(--text-size-body-2xs);
+  letter-spacing: var(--letter-spacing-loosest);
+  line-height: var(--leading-loose);
+  text-transform: uppercase;
+}
+
+:where(.quote) {
+  position: relative;
+  padding-left: var(--spacing-l);
+  color: var(--color-text-secondary);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-bg-accent),
+      var(--color-bg-default)
+    );
+  }
+}
+
+:where(.link) {
+  color: var(--color-text-accent);
+  text-decoration: none;
+}
+
+:where(.link:hover) {
+  color: var(--color-text-primary);
+}
+
+/* Markdown
+ * Can be added to any div that contains markdown output to give it a bit of styling
+*/
+
+:where(.markdown) {
+  > * + * {
+    margin-top: var(--spacing-m);
+  }
+
+  ul,
+  ol {
+    padding-left: 2rem;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  li {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  a {
+    color: var(--color-text-accent);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-text-primary);
+    }
+  }
+}
