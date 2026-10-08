@@ -119,4 +119,7 @@ You don't have to write pages or code to contribute! Here are just a few other w
 
 ## License
 
-By contributing, you agree that your contributions to the website's code will be licensed under the [GNU General Public License version 2](LICENSE).
+By contributing, you agree that your contributions will be licensed under the same terms as the rest of the site:
+
+- **Content** (the documentation text in `src/content/`): [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- **Code**: [GNU General Public License version 2](LICENSE)

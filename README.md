@@ -27,6 +27,11 @@ The full guide for writers is on the site at `/contributing/writing-docs/`, from
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Everyone taking part is expected to follow the [Code of Conduct](CODE-OF-CONDUCT.md).
 
-## License
+## Licenses
 
-The code of this website is licensed under the GNU General Public License version 2 ([GPL-2.0](LICENSE)).
+The content and the code of this website are separately licensed.
+
+- The **content**, the documentation text in `src/content/`, is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC-BY-NC-SA-4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
+- The **code** that structures the website is licensed under the GNU General Public License version 2 ([GPL-2.0](LICENSE)).
+
+For licensing information about libprocessing itself, see https://github.com/processing/libprocessing/blob/main/LICENSE.md
