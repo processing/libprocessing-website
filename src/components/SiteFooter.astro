@@ -18,10 +18,18 @@ const links = [
     <a class="logo" href={site.links.foundation} aria-label="Processing Foundation">
       <PFLogo />
     </a>
-    <p class="about text-secondary">
-      libprocessing is an experimental research project of the Processing
-      Foundation. APIs change without notice.
-    </p>
+    <div class="about text-secondary">
+      <p>
+        libprocessing is an experimental research project of the Processing
+        Foundation. APIs change without notice.
+      </p>
+      <p class="license">
+        Text licensed under{' '}
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+        Site code licensed under{' '}
+        <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL-2.0</a>.
+      </p>
+    </div>
     <ul class="links">
       {links.map(({ label, href }) => <li><a href={href}>{label}</a></li>)}
     </ul>
@@ -53,6 +61,20 @@ const links = [
     max-width: 32ch;
     font-size: var(--text-size-body-xs);
     line-height: var(--leading-loose);
+  }
+
+  .license {
+    margin-top: var(--spacing-m);
+    font-size: var(--text-size-body-2xs);
+  }
+
+  .license a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .license a:hover {
+    color: var(--color-text-accent);
   }
 
   .links {
