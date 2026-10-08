@@ -7,7 +7,7 @@ export const site = {
   colorTheme: 'default' satisfies ColorThemeName as ColorThemeName,
   // Where "Edit this page" points. The content path is appended, e.g. `docs/faq/index.md`.
   editBaseUrl:
-    'https://github.com/processing/libprocessing-docs/edit/main/src/content/',
+    'https://github.com/processing/libprocessing-website/edit/main/src/content/',
   links: {
     github: 'https://github.com/processing/libprocessing',
     processing4: 'https://github.com/processing/processing4',
