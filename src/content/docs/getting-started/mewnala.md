@@ -1,7 +1,7 @@
 ---
 title: mewnala (Python)
 description: Install mewnala with uv and run a sketch.
-order: 1
+order: 2
 languages: [python]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: libprocessing (Rust)
 description: Build libprocessing from source and run the Rust examples.
-order: 4
+order: 1
 languages: [rust]
 ---
 
