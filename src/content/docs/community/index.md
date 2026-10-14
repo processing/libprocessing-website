@@ -11,8 +11,8 @@ links:
     href: https://github.com/processing/processing4
     description: Processing 5.0 lives on the main branch.
   - label: Discord
-    href: ""
-    description: Come say hi in #devs-chat.
+    href: https://discord.gg/gQHTgNuC5c
+    description: "Come say hi in #devs-chat."
   - label: Processing Foundation
     href: https://processingfoundation.org
 ---
