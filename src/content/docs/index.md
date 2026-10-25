@@ -34,8 +34,9 @@ quickstarts:
 libprocessing is research and development. Nothing here is stable, and APIs change without notice.
 :::
 
-`libprocessing` is a shared core written in Rust meant to serve as a new rendering engine in Processing 5.0.
-We are building this in a very lightweight and modular way as to enable the potential to support other projects.
+`libprocessing` is a shared core written in Rust. It was first started to serve as a new rendering engine in Processing 5.0,
+We are building this in a very lightweight and modular way as to support other projects.
 This already is being used for an experimental Python library (mewnala), and we are able to run examples built with libprocessing in the web browser using WASM.
 
-But more than being able to make sketching environments, we would like for `libprocessing` to enable other types of tools and integrations with a plurality of creative workflows.
+But more than being able to make sketching environments, we would like for `libprocessing`
+to support new tools, creative workflows, and enable more interoperability in the open source ecosystem.
