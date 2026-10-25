@@ -25,17 +25,20 @@ git submodule update --init
 
 ### Build commands
 
-This project uses [just](https://github.com/casey/just) as a command runner:
-
-```bash
-cargo install just
-```
-
-Run `just` to see available commands.
-
 ## Run an example
 
 ```bash
 cargo run --example # to list out all the available examples
 cargo run --example <EXAMPLE_NAME> # to run an example in examples/ directory
 ```
+
+## `just` command runner
+This project uses [just](https://github.com/casey/just) to automate tasks around visual testing, python, WASM, and documentation:
+
+### To Install
+```bash
+cargo install just
+```
+
+Run `just` to see available commands.
+
