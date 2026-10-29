@@ -17,9 +17,9 @@ quickstarts:
     command: git clone --recursive https://github.com/processing/libprocessing
     href: /getting-started/rust/
   - language: python
-    title: mewnala
-    command: uv add mewnala
-    href: /getting-started/mewnala/
+    title: processing-py
+    command: uv add processing-py
+    href: /getting-started/processing-py/
   - language: java
     title: Processing 5.0
     command: ./gradlew build -PenableWebGPU=true
