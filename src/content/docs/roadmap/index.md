@@ -24,7 +24,7 @@ Platform targets (desktop, web/WASM, embedded, XR) cut across all of these.
 - Stable release on upstream bevy, published to crates.io
 - CI with example, visual, and performance regression testing
 - Documentation site with architecture, contributing guide, API reference, and tutorials
-- Language bindings beyond Rust (Python via mewnala, Java for Processing, JS for p5.js)
+- Language bindings beyond Rust (Python via processing-py, Java for Processing, JS for p5.js)
 - Live coding and hot reload of sketches and shaders
 
 ## 1. Core Rendering Technologies

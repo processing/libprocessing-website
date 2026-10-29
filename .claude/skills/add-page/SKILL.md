@@ -38,7 +38,7 @@ Body:
 
 - No `# H1`; the title comes from frontmatter. Start at `##`.
 - An outline is `##` headings in the order a reader needs them, with a `:::todo` note under any heading whose content isn't obvious.
-- Internal links are absolute with a trailing slash: `/getting-started/mewnala/`.
+- Internal links are absolute with a trailing slash: `/getting-started/processing-py/`.
 - Text copied from somewhere else keeps its wording, gets a `:::note` at the top linking to the source ("copied from … for now; if they disagree, the source wins"), and bare issue numbers like `#188` become links to `https://github.com/processing/libprocessing/issues/188`.
 
 ## 3. Set `order` and renumber

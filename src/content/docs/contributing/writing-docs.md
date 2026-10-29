@@ -20,7 +20,7 @@ src/content/docs/
 ├── index.md                  → /
 ├── getting-started/
 │   ├── index.md              → /getting-started/        (section landing page)
-│   └── mewnala.md            → /getting-started/mewnala/
+│   └── processing-py.md      → /getting-started/processing-py/
 └── faq/
     └── index.md              → /faq/
 ```
@@ -31,14 +31,14 @@ Each top-level folder is a section in the navigation, and its `index.md` is the 
 
 ```yaml
 ---
-title: mewnala (Python)          # required
+title: processing-py (Python)    # required
 description: One sentence.       # shown under the title, in cards, and in search results
-navLabel: mewnala                # shorter label for the sidebar (optional)
+navLabel: processing-py          # shorter label for the sidebar (optional)
 order: 1                         # position in the sidebar, lowest first
 status: outline                  # outline | draft | ready
 languages: [python]              # python | rust | java | web
 links:                           # optional cards shown above the page body
-  - label: mewnala API
+  - label: processing-py API
     href: https://processing.github.io/libprocessing/
     description: Generated from docstrings.
 ---

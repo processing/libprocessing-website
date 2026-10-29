@@ -16,7 +16,7 @@ is to overhaul the rendering capabilities in the eponymous Java project called [
 The new 5.0 version of that project will be making heavy use of this particular project.
 
 The other purpose of writing a project like this in Rust (and not Java) is so that we are able to support other projects, too.
-We already have demonstrated an ability to write python sketches with [mewnala](mewnala/), and to build sketches that run in the web with [WASM (web assembly)](web/).
+We already have demonstrated an ability to write python sketches with [processing-py](processing-py/), and to build sketches that run in the web with [WASM (web assembly)](web/).
 
 This is a really exciting project for us, and we're super excited that you're interested in learning more.
 
@@ -24,4 +24,4 @@ This is a really exciting project for us, and we're super excited that you're in
 
 - If you are wanting to work with the shared core in rust, take a look at [libprocessing](rust/) itself.
 - If you are wanting to see what is happening in Processing 5.0, go [here](processing-5/)!
-- If you are wanting to try writing a Processing sketch in python, go install [mewnala](mewnala/) and give it a try!
+- If you are wanting to try writing a Processing sketch in python, go install [processing-py](processing-py/) and give it a try!

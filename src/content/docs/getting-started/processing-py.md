@@ -1,6 +1,6 @@
 ---
-title: mewnala (Python)
-description: Install mewnala with uv and run a sketch.
+title: processing-py (Python)
+description: Install processing-py with uv and run a sketch.
 order: 2
 languages: [python]
 ---
@@ -14,7 +14,7 @@ Try running the examples in the [processing_pyo3 examples directory](crates/proc
 
 ### Installing `uv`
 
-We are big fans of [uv](https://github.com/astral-sh/uv) and this is our recomended way to get started using `mewnala`
+We are big fans of [uv](https://github.com/astral-sh/uv) and this is our recomended way to get started using `processing-py`
 
 #### Setting up uv on linux or macOS
 ```bash
@@ -26,22 +26,22 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-## Add mewnala
+## Add processing-py
 
-We're going to create a folder named `mewnala-sketchbook` and install the `mewnala` package inside:
+We're going to create a folder named `processing-py-sketchbook` and install the `processing-py` package inside:
 
 ```bash
 # Initialize a project with uv
-uv init mewnala-sketchbook
+uv init processing-py-sketchbook
 
 # Enter the project directory
-cd mewnala-sketchbook
+cd processing-py-sketchbook
 
 # add the package
-uv add mewnala
+uv add processing-py
 ```
 
-Now create a file named `sketch.py` at the root of `mewnala-sketchbook`.
+Now create a file named `sketch.py` at the root of `processing-py-sketchbook`.
 
 :::note
 you can use any file name you want for your sketch
@@ -50,7 +50,7 @@ you can use any file name you want for your sketch
 You can use this code to test
 
 ```python
-from mewnala import *
+from processing_py import *
 
 def setup():
     size(400, 400)
