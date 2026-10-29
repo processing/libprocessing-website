@@ -79,6 +79,6 @@ In Processing 5.0, libprocessing is an optional WebGPU renderer alongside the ex
 - [libprocessing design principles](https://github.com/processing/libprocessing/blob/main/docs/principles.md), written at the start of the project
 - [Bevy's sixth birthday](https://bevy.org/news/bevys-sixth-birthday/), on the size and activity of the Bevy community
 - [Bevy 0.19: render big scenes faster](https://bevy.org/news/bevy-0-19/#render-big-scenes-faster), on recent GPU-driven performance improvements
-- [Python examples](https://github.com/processing/libprocessing/tree/main/crates/processing_pyo3/examples) and [processing-examples-mewnala](https://github.com/processing/processing-examples-mewnala/)
+- [Python examples](https://github.com/processing/libprocessing/tree/main/crates/processing_pyo3/examples)
 - Talks on the project's strategy and vision, listed on the [Community](/community/) page
 - #devs-chat on Discord
