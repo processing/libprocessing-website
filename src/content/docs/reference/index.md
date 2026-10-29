@@ -7,7 +7,7 @@ links:
   - label: libprocessing (Rust)
     href: ""
     description: rustdoc for every crate.
-  - label: mewnala (Python)
+  - label: processing-py (Python)
     href: https://processing.github.io/libprocessing/
     description: mkdocs site, generated from docstrings.
 ---
@@ -23,7 +23,7 @@ One line per crate on what it's for.
 | `processing_core` | Core of libprocessing |
 | `processing_render` | Rendering functionality |
 | `processing_ffi` | We expose the FFI layer here |
-| `processing_pyo3` | This is where `mewnala` is defined |
+| `processing_pyo3` | This is where `processing-py` is defined |
 | `processing_audio` | Crate for managing audio I/O |
 | `processing_cuda` | API calls for working with Nvidia's CUDA |
 | `processing_glfw` | Shim for working with glfw |
