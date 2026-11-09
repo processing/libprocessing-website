@@ -41,7 +41,7 @@ Every UI change needs a passing build and screenshots before it's done.
    npx astro preview --port 4329
    ```
 
-   Then, for each page the change affects (always include `/` and one docs page, e.g. `/getting-started/mewnala/`):
+   Then, for each page the change affects (always include `/` and one docs page, e.g. `/getting-started/processing-py/`):
 
    ```sh
    CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
